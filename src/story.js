@@ -21,6 +21,8 @@ class InteractiveScreen {
 let i = 0;
 const screens = [];
 screens.push(new InteractiveScreen(2, "1"));
+screens.push(new InteractiveScreen(5, "2"));
+screens.push(new InteractiveScreen(10, "3"));
 
 screens.sort((a, b) => a.moment - b.moment);
 
