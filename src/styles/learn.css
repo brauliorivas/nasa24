@@ -1,0 +1,18 @@
+main {
+  font-family: "Overused Grotesk";
+  display: flex;
+  flex-direction: column;
+  padding: 50px 20%;
+}
+
+article {
+  margin: 15px 0px;
+}
+
+.heading-link {
+  visibility: hidden;
+}
+
+p {
+  margin-left: 2ch;
+}

@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "SharpGrotesk";
+  src: url("../assets/fonts/SharpGrotesk-Medium25.otf");
+}
+
+@font-face {
+  font-family: "Overused Grotesk";
+  src: url("../assets/fonts/OverusedGrotesk-Roman.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
