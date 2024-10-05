@@ -15,8 +15,38 @@
         <source src="src/assets/video/demo.mp4" type="video/mp4" />
       </video>
     </main>
-    <div id="landscape-content"></div>
-    <div id="portrait-content"></div>
+
+    <div id="landscape">
+      <div id="controls">
+        <button id="close-landscape">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            viewBox="0 0 16 16"
+            fill="#000000"
+            id="close-svg"
+            class="menu-button-svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4.28 3.22a.75.75 0 0 0-1.06 1.06L6.94 8l-3.72 3.72a.75.75 0 1 0 1.06 1.06L8 9.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L9.06 8l3.72-3.72a.75.75 0 0 0-1.06-1.06L8 6.94L4.28 3.22Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </button>
+      </div>
+      <div id="landscape-content"></div>
+    </div>
+
+    <div id="portrait">
+      <div id="portrait-content"></div>
+    </div>
+
+    <div id="1" class="content">First</div>
+    <div id="2" class="content">Second</div>
+    <div id="3" class="content">Third</div>
+
     <script type="module" src="src/navbar.js"></script>
     <script type="module" src="src/story.js"></script>
   </body>

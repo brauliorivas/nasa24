@@ -10,7 +10,11 @@ main {
   background-color: #030303;
 }
 
-#landscape-content {
+.content {
+  display: none;
+}
+
+#landscape {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -23,12 +27,25 @@ main {
   z-index: 2;
 }
 
+#controls {
+  padding: 10px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 @media (orientation: landscape) {
   #video {
     height: 100vh;
   }
 
-  #portrait-content {
+  #portrait {
     display: none;
   }
 }
@@ -38,7 +55,7 @@ main {
     width: 100vw;
   }
 
-  #landscape-content {
+  #landscape {
     display: none;
   }
 }
