@@ -3,6 +3,7 @@ import gsap from "gsap";
 const video = document.getElementById("video");
 const landscape = document.getElementById("landscape");
 const closeButton = document.getElementById("close-landscape");
+const continuePortraitButton = document.getElementById("continue-portrait");
 
 class InteractiveScreen {
   constructor(moment, contentId) {
@@ -13,7 +14,7 @@ class InteractiveScreen {
   render(container) {
     container.replaceChildren();
     const content = document.getElementById(this.contentId);
-    content.style.display = "block";
+    content.style.display = "flex";
     container.appendChild(content);
   }
 }
@@ -23,6 +24,10 @@ const screens = [];
 screens.push(new InteractiveScreen(2, "1"));
 screens.push(new InteractiveScreen(5, "2"));
 screens.push(new InteractiveScreen(10, "3"));
+screens.push(new InteractiveScreen(10, "4"));
+screens.push(new InteractiveScreen(10, "5"));
+screens.push(new InteractiveScreen(10, "6"));
+screens.push(new InteractiveScreen(10, "7"));
 
 screens.sort((a, b) => a.moment - b.moment);
 
@@ -59,7 +64,7 @@ function renderScreen(screen, container) {
 
   if (window.matchMedia("(orientation: landscape)").matches) {
     gsap.to(landscape, {
-      translateX: "-50%",
+      translateX: "-100%",
       duration: 1,
     });
   }
@@ -67,8 +72,12 @@ function renderScreen(screen, container) {
 
 closeButton.addEventListener("click", () => {
   gsap.to(landscape, {
-    translateX: "50%",
+    translateX: "100%",
     duration: 1,
   });
+  video.play();
+});
+
+continuePortraitButton.addEventListener("click", () => {
   video.play();
 });
