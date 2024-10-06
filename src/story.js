@@ -28,6 +28,8 @@ screens.push(new InteractiveScreen(47, "3"));
 screens.push(new InteractiveScreen(60 + 28, "4"));
 screens.push(new InteractiveScreen(60 * 2 + 30, "5"));
 screens.push(new InteractiveScreen(60 * 3 + 53, "6"));
+screens.push(new InteractiveScreen(60 * 4 + 27, "7"));
+screens.push(new InteractiveScreen(60 * 5 + 15, "8"));
 
 screens.sort((a, b) => a.moment - b.moment);
 
