@@ -32,7 +32,7 @@
 }
 
 .description{
-  font-size: 2vw;
+  font-size: 40px;
   color: black !important;
 }
 
@@ -129,4 +129,12 @@
 
 .fin{
   height: 5vh;
+}
+
+@media (max-width: 768px) {
+  .description{
+    font-size: 20px;
+    color: black !important;
+    padding: 0 10px ;
+  }
 }
