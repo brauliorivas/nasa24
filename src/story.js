@@ -20,14 +20,14 @@ class InteractiveScreen {
 }
 
 let i = 0;
+
 const screens = [];
-screens.push(new InteractiveScreen(2, "1"));
-screens.push(new InteractiveScreen(5, "2"));
-screens.push(new InteractiveScreen(10, "3"));
-screens.push(new InteractiveScreen(10, "4"));
-screens.push(new InteractiveScreen(10, "5"));
-screens.push(new InteractiveScreen(10, "6"));
-screens.push(new InteractiveScreen(10, "7"));
+screens.push(new InteractiveScreen(9, "1"));
+screens.push(new InteractiveScreen(27, "2"));
+screens.push(new InteractiveScreen(47, "3"));
+screens.push(new InteractiveScreen(60 + 28, "4"));
+screens.push(new InteractiveScreen(60 * 2 + 30, "5"));
+screens.push(new InteractiveScreen(60 * 3 + 53, "6"));
 
 screens.sort((a, b) => a.moment - b.moment);
 
