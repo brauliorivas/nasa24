@@ -1,128 +1,211 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <link rel="stylesheet" href="/src/styles/game.css" />
+    <title>Tell Us a Climate Story!</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/src/styles/game.css">
-  <title>Tell Us a Climate Story!</title>
-</head>
-
-<body class="body_game">
-  <nav-bar base="#000000" alter="#000000"></nav-bar>
-  <script type="module" src="src/navbar.js"></script>
-  <div class="body_game ">
-    <div class="center" id="start">
-      <h1 class="title">Reduce Carbon Footprint</h1>
+  <body class="body_game">
+    <nav-bar base="#ffffff" alter="#000000"></nav-bar>
+    <script type="module" src="src/navbar.js"></script>
+    <div class="body_game">
+      <div class="center" id="start">
+        <h1 class="title">Reduce Carbon Footprint</h1>
+      </div>
+      <div class="container_center progressdiv">
+        <div class="medio-left">
+          <p>CARBON FOOTPRINT measured in tons of CO2</p>
+        </div>
+        <div class="progress-bar">
+          <div id="progress" class="progress"></div>
+        </div>
+        <div class="medio-right">
+          <div class="result" id="result"></div>
+        </div>
+      </div>
+      <div class="center">
+        <h4 class="description">
+          Select the changes you would be willing to make in your lifestyle
+        </h4>
+      </div>
+      <div class="container_center">
+        <div class="center all-w">
+          <h4>🚗 Transport</h4>
+          <div class="options" id="optionsT"></div>
+        </div>
+        <div class="center all-w">
+          <h4>🏠Home</h4>
+          <div class="options" id="optionsH"></div>
+        </div>
+        <div class="center all-w">
+          <h4>♻️ Other</h4>
+          <div class="options" id="optionsO"></div>
+        </div>
+      </div>
+      <div class="fin"></div>
     </div>
-    <div class="container_center  progressdiv">
-      <div class="medio-left">
-        <p>CARBON FOOTPRINT measured in tons of CO2</p>
-      </div>
-      <div class="progress-bar">
-        <div id="progress" class="progress"></div>
-      </div>
-      <div class="medio-right">
-        <div class="result" id="result"></div>
-      </div>
-    </div>
-    <div class="center">
-      <h4 class="description">Select the changes you would be willing to make
-        in your lifestyle</h4>
-    </div>
-    <div class="container_center">
-      <div class="center all-w ">
-        <h4>🚗 Transporte</h4>
-        <div class="options" id="optionsT"></div>
-      </div>
-      <div class="center all-w">
-        <h4> 🏠Home</h4>
-        <div class="options" id="optionsH"></div>
-      </div>
-      <div class="center all-w">
-        <h4> ♻️ Other</h4>
-        <div class="options" id="optionsO"></div>
-      </div>
-    </div>
-    <div class="fin">
-      
-    </div>
-  </div>
 
-  <script>
-    const maxFootprint = 6.27;
-    let currentFootprint = maxFootprint;
+    <script>
+      const maxFootprint = 6.27;
+      let currentFootprint = maxFootprint;
 
-    const transportoptions = [
-      { id: 'noCar', label: 'Would you live without a car?', value: 0.5 },
-      { id: 'electricCar', label: 'Would you switch your car for an electric one (BEV)?', value: 0.3 },
-      { id: 'hybridCar', label: 'Would you switch your car for a hybrid one (HEV)?', value: 0.2 },
-      { id: 'hydrogenCar', label: 'Would you switch your car for a hydrogen one (FCV)?', value: 0.25 },
-      { id: 'reduceFlight', label: 'Would you reduce a medium-distance flight per year?', value: 0.4 },
-      { id: 'reduceTransatlanticFlight', label: 'Would you reduce a transatlantic flight (or similar) per year?', value: 0.8 },
-      { id: 'publicTransport', label: 'Would you leave the car to use public transport?', value: 0.6 },
-      { id: 'telework', label: 'Would you telework?', value: 0.3 },
-    ];
+      const transportoptions = [
+        { id: "noCar", label: "Would you live without a car?", value: 0.5 },
+        {
+          id: "electricCar",
+          label: "Would you switch your car for an electric one (BEV)?",
+          value: 0.3,
+        },
+        {
+          id: "hybridCar",
+          label: "Would you switch your car for a hybrid one (HEV)?",
+          value: 0.2,
+        },
+        {
+          id: "hydrogenCar",
+          label: "Would you switch your car for a hydrogen one (FCV)?",
+          value: 0.25,
+        },
+        {
+          id: "reduceFlight",
+          label: "Would you reduce a medium-distance flight per year?",
+          value: 0.4,
+        },
+        {
+          id: "reduceTransatlanticFlight",
+          label:
+            "Would you reduce a transatlantic flight (or similar) per year?",
+          value: 0.8,
+        },
+        {
+          id: "publicTransport",
+          label: "Would you leave the car to use public transport?",
+          value: 0.6,
+        },
+        { id: "telework", label: "Would you telework?", value: 0.3 },
+      ];
 
+      const homeOptions = [
+        {
+          id: "electricityCompany",
+          label:
+            "Would you switch your electricity company to one that is 100% renewable?",
+          value: 0.3,
+        },
+        {
+          id: "heatPump",
+          label:
+            "Would you heat your home using only a heat pump (like air conditioners)?",
+          value: 0.25,
+        },
+        {
+          id: "renewableHeating",
+          label: "Would you heat your home using only renewable energy?",
+          value: 0.35,
+        },
+        {
+          id: "renewableEnergy",
+          label:
+            "Would you produce your own renewable energy (solar panels, etc)?",
+          value: 0.4,
+        },
+        {
+          id: "passiveHouse",
+          label: "Would you move to a passive house?",
+          value: 0.5,
+        },
+        {
+          id: "thermalInsulation",
+          label:
+            "Would you invest in improving your home's thermal insulation?",
+          value: 0.3,
+        },
+        {
+          id: "saveHotWater",
+          label: "Would you save on hot water?",
+          value: 0.2,
+        },
+        {
+          id: "reduceRoomTemperature",
+          label: "Would you reduce the temperature of the rooms you live in?",
+          value: 0.15,
+        },
+        {
+          id: "cohousing",
+          label: "Would you practice co-housing?",
+          value: 0.35,
+        },
+      ];
 
-    const homeOptions = [
-      { id: 'electricityCompany', label: 'Would you switch your electricity company to one that is 100% renewable?', value: 0.3 },
-      { id: 'heatPump', label: 'Would you heat your home using only a heat pump (like air conditioners)?', value: 0.25 },
-      { id: 'renewableHeating', label: 'Would you heat your home using only renewable energy?', value: 0.35 },
-      { id: 'renewableEnergy', label: 'Would you produce your own renewable energy (solar panels, etc)?', value: 0.4 },
-      { id: 'passiveHouse', label: 'Would you move to a passive house?', value: 0.5 },
-      { id: 'thermalInsulation', label: "Would you invest in improving your home's thermal insulation?", value: 0.3 },
-      { id: 'saveHotWater', label: 'Would you save on hot water?', value: 0.2 },
-      { id: 'reduceRoomTemperature', label: 'Would you reduce the temperature of the rooms you live in?', value: 0.15 },
-      { id: 'cohousing', label: 'Would you practice co-housing?', value: 0.35 }
-    ];
+      const otherOptions = [
+        {
+          id: "giveUpPet",
+          label: "Would you give up having a dog (or another pet)?",
+          value: 0.4,
+        },
+        {
+          id: "durablePurchases",
+          label:
+            "Would you reduce the amount of purchases you make or buy things that last longer?",
+          value: 0.3,
+        },
+        {
+          id: "reduceClothing",
+          label: "Would you reduce your consumption of clothing?",
+          value: 0.2,
+        },
+        {
+          id: "reducePlastic",
+          label: "Would you reduce your consumption of plastic?",
+          value: 0.25,
+        },
+        { id: "recycle", label: "Would you recycle?", value: 0.15 },
+        { id: "lessPaper", label: "Would you consume less paper?", value: 0.2 },
+      ];
 
-    const otherOptions = [
-      { id: 'giveUpPet', label: 'Would you give up having a dog (or another pet)?', value: 0.4 },
-      { id: 'durablePurchases', label: 'Would you reduce the amount of purchases you make or buy things that last longer?', value: 0.3 },
-      { id: 'reduceClothing', label: 'Would you reduce your consumption of clothing?', value: 0.2 },
-      { id: 'reducePlastic', label: 'Would you reduce your consumption of plastic?', value: 0.25 },
-      { id: 'recycle', label: 'Would you recycle?', value: 0.15 },
-      { id: 'lessPaper', label: 'Would you consume less paper?', value: 0.2 }
-    ];
+      function updateFootprint() {
+        const percentage = (currentFootprint / maxFootprint) * 100;
+        document.getElementById("progress").style.width = `${percentage}%`;
+        document.getElementById("result").textContent =
+          `Your carbon footprint: ${currentFootprint.toFixed(2)} CO2 tons`;
+      }
 
-    function updateFootprint() {
-      const percentage = (currentFootprint / maxFootprint) * 100;
-      document.getElementById('progress').style.width = `${percentage}%`;
-      document.getElementById('result').textContent = `Tu huella de carbono: ${currentFootprint.toFixed(2)} toneladas de CO2`;
-    }
+      function handleOptionChange(event) {
+        const { checked, value } = event.target;
+        currentFootprint = checked
+          ? Math.max(currentFootprint - parseFloat(value), 0)
+          : Math.min(currentFootprint + parseFloat(value), maxFootprint);
+        updateFootprint();
+      }
 
-    function handleOptionChange(event) {
-      const { checked, value } = event.target;
-      currentFootprint = checked
-        ? Math.max(currentFootprint - parseFloat(value), 0)
-        : Math.min(currentFootprint + parseFloat(value), maxFootprint);
-      updateFootprint();
-    }
-
-    function createOptions(jsOptions,clas) {
-      const optionsContainer = document.getElementById(clas);
-      jsOptions.forEach(option => {
-        const div = document.createElement('div');
-        div.className = 'option';
-        div.innerHTML = `
+      function createOptions(jsOptions, clas) {
+        const optionsContainer = document.getElementById(clas);
+        jsOptions.forEach((option) => {
+          const div = document.createElement("div");
+          div.className = "option";
+          div.innerHTML = `
                     <input type="checkbox" id="${option.id}" value="${option.value}" onchange="handleOptionChange(event)">
                     <label for="${option.id}">${option.label}</label>
                 `;
 
-        div.querySelector('input').addEventListener('click', function() {
-            document.getElementById('start').scrollIntoView({ behavior: 'smooth' });
+          div.querySelector("input").addEventListener("click", function () {
+            document
+              .getElementById("start")
+              .scrollIntoView({ behavior: "smooth" });
+          });
+
+          optionsContainer.appendChild(div);
         });
+      }
 
-        optionsContainer.appendChild(div);
-      });
-    }
-
-    createOptions(transportoptions,"optionsT");
-    createOptions(homeOptions,"optionsH");
-    createOptions(otherOptions,"optionsO");
-    updateFootprint();
-  </script>
-</body>
-
+      createOptions(transportoptions, "optionsT");
+      createOptions(homeOptions, "optionsH");
+      createOptions(otherOptions, "optionsO");
+      updateFootprint();
+    </script>
+  </body>
 </html>
+
